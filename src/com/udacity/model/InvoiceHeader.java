@@ -76,6 +76,7 @@ public class InvoiceHeader {
     
     public String getDataAsCSV() {
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        df.setLenient(false) ;
         return "" + getInvNum() + "," + df.format(getInvDate()) + "," + getCustomerName();
     }
     

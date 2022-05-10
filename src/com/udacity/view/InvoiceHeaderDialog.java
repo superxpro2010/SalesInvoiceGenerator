@@ -5,8 +5,8 @@
  */
 package com.udacity.view;
 
-import com.udacity.InvoiceFrame;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -17,6 +17,7 @@ import javax.swing.JTextField;
  * @author DELL
  */
 public class InvoiceHeaderDialog extends JDialog {
+
     private JTextField custNameField;
     private JTextField invDateField;
     private JLabel custNameLbl;
@@ -24,30 +25,33 @@ public class InvoiceHeaderDialog extends JDialog {
     private JButton okBtn;
     private JButton cancelBtn;
 
-    public InvoiceHeaderDialog(InvoiceFrame frame) {
+    public InvoiceHeaderDialog() {
         custNameLbl = new JLabel("Customer Name:");
         custNameField = new JTextField(20);
         invDateLbl = new JLabel("Invoice Date:");
         invDateField = new JTextField(20);
         okBtn = new JButton("OK");
         cancelBtn = new JButton("Cancel");
-        
+
         okBtn.setActionCommand("createInvOK");
         cancelBtn.setActionCommand("createInvCancel");
-        
-        okBtn.addActionListener(frame);
-        cancelBtn.addActionListener(frame);
+
         setLayout(new GridLayout(3, 2));
-        
+
         add(invDateLbl);
         add(invDateField);
         add(custNameLbl);
         add(custNameField);
         add(okBtn);
         add(cancelBtn);
-        
+
         pack();
-        
+
+    }
+
+    public void setActionsListener(ActionListener actionListener) {
+        okBtn.addActionListener(actionListener);
+        cancelBtn.addActionListener(actionListener);
     }
 
     public JTextField getCustNameField() {
@@ -57,5 +61,5 @@ public class InvoiceHeaderDialog extends JDialog {
     public JTextField getInvDateField() {
         return invDateField;
     }
-    
+
 }

@@ -5,7 +5,6 @@
  */
 package com.udacity.view;
 
-import com.udacity.InvoiceFrame;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -36,7 +35,7 @@ public class SaveInvoicesDialog extends JDialog implements ActionListener {
     private File headersFile;
     private File linesFile;
 
-    public SaveInvoicesDialog(InvoiceFrame frame) {
+    public SaveInvoicesDialog() {
         setTitle("Please Select Invoice Files To Save:");
         invoiceHeadersFilePathLbl = new JLabel("Headers File:");
         invoiceHeadersFilePathLbl.setSize(200, 30);
@@ -59,8 +58,7 @@ public class SaveInvoicesDialog extends JDialog implements ActionListener {
 
         okBtn.setActionCommand("SaveFile");
         cancelBtn.setActionCommand("Cancel");
-
-        okBtn.addActionListener(frame);
+        
         cancelBtn.addActionListener(this);
         setLayout(new GridLayout(3, 1));
 
@@ -125,5 +123,9 @@ public class SaveInvoicesDialog extends JDialog implements ActionListener {
 
     public boolean validateFiles() {
         return headersFile != null && linesFile != null;
+    }
+
+    public void addOkActionListener(ActionListener actionListener) {
+       okBtn.addActionListener(actionListener);
     }
 }

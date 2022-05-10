@@ -17,10 +17,12 @@ import javax.swing.table.AbstractTableModel;
 public class InvoiceHeaderTableModel extends AbstractTableModel {
 
     private List<InvoiceHeader> invoicesList;
-    private DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+    private final DateFormat df;
     
     public InvoiceHeaderTableModel(List<InvoiceHeader> invoicesList) {
         this.invoicesList = invoicesList;
+        this.df = new SimpleDateFormat("dd-MM-yyyy");
+        this.df.setLenient(false) ;
     }
 
     public List<InvoiceHeader> getInvoicesList() {
